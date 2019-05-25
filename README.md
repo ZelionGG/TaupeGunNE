@@ -1,9 +1,9 @@
 # TaupeGunNE
-Plugin Taupe Gun for Minecraft sucharged by ZelionGG
+Taupe Gun Plugin for Minecraft sucharged by ZelionGG
 
 ## Supported minecraft versions
-- 1.8.8 (Craftbukkit)
-- 1.8.9 (Craftbukkit)
+- 1.8.8 (Craftbukkit/Spigot)
+- 1.8.9 (Craftbukkit/Spigot)
 
 ## Description
 - Same rules that UHPlugin (UHC) : world 2000x2000, hardcore, no natural regeneration (map settings are editable)
@@ -12,11 +12,11 @@ Plugin Taupe Gun for Minecraft sucharged by ZelionGG
 - There are one or multiple teams of moles
 - Every mole has a random kit (/claim)
 
-# Note
+# Credits
 Inspired from Valgrifer/Super-Taupe-Gun 
 (https://github.com/Valgrifer/Super-Taupe-Gun/tree/master/Super%20Taupe%20Gun/src)
-
-Supermoles have been removed
+Surcharged from LetMeR00t/TaupeGun-Minecraft 
+(https://github.com/LetMeR00t/TaupeGun-Minecraft)
 
 # License
 Free to use, edit and share: 
