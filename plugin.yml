@@ -1,11 +1,11 @@
-name: TaupeGunINSA
+name: TaupeGunNE
 main: taupegun.start.TaupeGunPlugin
 version: 1.0
-author: LetMeR00t
+author: ZelionGG
 
 commands:
   moles:
-    description: Main command to manage the TaupeGunINSA plugin
+    description: Main command to manage the TaupeGunNE plugin
     usage: /moles <subcommand>
   reveal:
     description: Reveal himself as a mole

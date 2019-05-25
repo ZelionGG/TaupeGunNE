@@ -4,7 +4,7 @@ map:
     startResizeEpisodeNumber: 5
     timeFromStartSizeToEndSizeSeconds: 1800
 moles:
-    timer: 1
+    timer: 50
     gamemode_no_contraint: false
     number_team_moles: 1
     option_classic_gamemode:
