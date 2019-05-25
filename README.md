@@ -15,6 +15,7 @@ Taupe Gun Plugin for Minecraft sucharged by ZelionGG
 # Credits
 Inspired from Valgrifer/Super-Taupe-Gun 
 (https://github.com/Valgrifer/Super-Taupe-Gun/tree/master/Super%20Taupe%20Gun/src)
+
 Surcharged from LetMeR00t/TaupeGun-Minecraft 
 (https://github.com/LetMeR00t/TaupeGun-Minecraft)
 
