@@ -1,0 +1,18 @@
+map:
+    startSize: 2000
+    endSize: 10
+    startResizeEpisodeNumber: 5
+    timeFromStartSizeToEndSizeSeconds: 1800
+moles:
+    timer: 1
+    gamemode_no_contraint: false
+    number_team_moles: 1
+    option_classic_gamemode:
+      moles_per_team: 1
+    option_extended_gamemode:
+      number_moles: 0
+    
+doDaylightCycle: false
+episodes:
+    time: 20
+scoreboard: Taupe Gun NightSquad Edition

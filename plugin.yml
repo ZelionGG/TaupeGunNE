@@ -1,0 +1,23 @@
+name: TaupeGunINSA
+main: taupegun.start.TaupeGunPlugin
+version: 1.0
+author: LetMeR00t
+
+commands:
+  moles:
+    description: Main command to manage the TaupeGunINSA plugin
+    usage: /moles <subcommand>
+  reveal:
+    description: Reveal himself as a mole
+    usage: /reveal
+  claim:
+    description: Give the kit for a mole
+    usage: /claim
+  t:
+    description: Speak with other moles
+    usage: /t
+  resurrect:
+    description: Resurrect a player after death
+    usage: /resurrect playerName teamName
+    
+depend: [TitleManager]
