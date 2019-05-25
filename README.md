@@ -1,5 +1,5 @@
 # TaupeGunNE
-Taupe Gun Plugin for Minecraft sucharged by ZelionGG
+Taupe Gun Plugin for Minecraft surcharged by ZelionGG
 
 ## Supported minecraft versions
 - 1.8.8 (Craftbukkit/Spigot)
