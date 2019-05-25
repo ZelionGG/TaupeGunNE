@@ -1,5 +1,6 @@
-# TaupeGunINSA
-Plugin Taupe Gun for Minecraft 
+# TaupeGunNE
+Plugin Taupe Gun for Minecraft sucharged by ZelionGG
+
 ## Supported minecraft versions
 - 1.8.8 (Craftbukkit)
 - 1.8.9 (Craftbukkit)
