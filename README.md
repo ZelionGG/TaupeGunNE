@@ -1,6 +1,8 @@
 # TaupeGunNE
 Taupe Gun Plugin for Minecraft surcharged by ZelionGG
 
+JAR File download link : https://github.com/ZelionGG/TaupeGunNE/releases
+
 ## Supported minecraft versions
 - 1.8.8 (Craftbukkit/Spigot)
 - 1.8.9 (Craftbukkit/Spigot)
