@@ -3,6 +3,8 @@ package taupegun.structures;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.bukkit.ChatColor;
@@ -34,6 +36,11 @@ public class Context {
 	 * List of moles teams
 	 */
 	private ArrayList<Team> molesTeams = null;
+	
+	/**
+	 * List of moles teams
+	 */
+	private HashMap<Team, List<Player>> preMolesTeams = null;
 	
 	/**
 	 * List of players (all), only modify when join or exit the server
@@ -113,6 +120,7 @@ public class Context {
 		this.kits = new ArrayList<Kit>();
 		this.molesWaitingKit = new ArrayList<Player>();
 		this.moles = new ArrayList<Player>();
+		this.preMolesTeams = new HashMap<>();
 		
 		// Initialize available colors
 		availableColors = new ArrayList<ChatColor>();
@@ -352,10 +360,20 @@ public class Context {
 		
 		removePlayerFromATeam(player);
 		
-		// Now find the new mole team
-		int rand = random.nextInt(molesTeams.size());
-		
-		Team team = molesTeams.get(rand);
+		Team player_team_new = null ;
+		for(Map.Entry<Team, List<Player>> entry : preMolesTeams.entrySet())
+		{
+			Team moles_team = entry.getKey();
+			List<Player> value = entry.getValue();
+			for(Player p : value)
+			{
+				if(p == player) {
+					player_team_new = moles_team;
+				}
+			}
+		}
+			
+		Team team = player_team_new;
 		
 		if (team.countPlayer() == 0){
 			// Add the score board team
@@ -369,10 +387,7 @@ public class Context {
 		}
 		
 		addPlayerToATeam(player,team);
-		
-		if (molesTeams.get(rand).countPlayer() == molesPerMolesTeam){
-			molesTeams.remove(rand);
-		}
+
 	}
 	
 	/**
@@ -382,6 +397,15 @@ public class Context {
 	 */
 	public Team getTeam(String teamName){
 		return teams.get(ChatColor.stripColor(teamName));
+	}
+	
+	/**
+	 * Get a team with his name
+	 * @param teamName	name of the team
+	 * @return	Team instance according to the given name
+	 */
+	public ArrayList<Team> getMolesTeam(){
+		return molesTeams;
 	}
 	
 	/**
@@ -939,6 +963,43 @@ public class Context {
 	public Random getRandom(){
 		return this.random;
 	}
+	
+	/**
+	 * Set the players' moles team
+	 */
+	public void setPreMolesTeam() {		
+		for(Team t : molesTeams)
+		{
+			preMolesTeams.put(t, new ArrayList<Player>());
+		}
+		
+		for(Player p : moles) 
+		{
+			boolean mole_placed = false;
+			
+			while(mole_placed == false) 
+			{
+				Random       random    = new Random();
+				List<Team> keys      = new ArrayList<Team>(preMolesTeams.keySet());
+				Team       randomKey = keys.get( random.nextInt(keys.size()) );
+				int value = preMolesTeams.get(randomKey).size();
+				
+				if(value < molesPerMolesTeam) 
+				{
+					this.preMolesTeams.get(randomKey).add(p);
+					mole_placed = true;
+				}
+			}
+			
+			
+		}	
+	}
+	
+	public HashMap<Team, List<Player>> getPreMolesTeam() {
+		return preMolesTeams;		
+	}
+	
+	
 }
 
 

@@ -3,8 +3,10 @@ package taupegun.start;
 import io.puharesource.mc.titlemanager.api.TitleObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.logging.Level;
@@ -406,14 +408,7 @@ public class TaupeGunPlugin extends JavaPlugin{
 					context.setNumberTeamMoles(config.getInt("moles.number_team_moles"));
 					context.setMolesPerMolesTeam(numberOfMolesPerMolesTeam);
 					
-					// Choose moles now for the future
-					startRandomMoles();
 					
-					// Initialize moles teams
-					for(int i = 1; i <= context.getNumberTeamMoles(); i++)
-					{
-						context.addMolesTeam("Moles-"+i);
-					}
 					
 					// Set configuration values
 					context.setMinutesLeft(config.getInt("episodes.time"));
@@ -566,14 +561,21 @@ public class TaupeGunPlugin extends JavaPlugin{
 			}
 			
 			if (c.getName().equalsIgnoreCase("t"))
-			{
-
-				Team team = context.getTeamOfPlayer((Player) s);
+			{				
 				
-				for(Player player : context.getMoles())
-				{
-					player.sendMessage(ChatColor.DARK_RED+""+ChatColor.ITALIC + "[Taupe <"+ChatColor.RED+""+ChatColor.ITALIC+team.getName()+""+ChatColor.DARK_RED+ChatColor.ITALIC+">] " + ChatColor.RESET + moleMessage(a));
-				}
+					HashMap<Team, List<Player>> preMolesTeams = context.getPreMolesTeam();
+					
+					for(Map.Entry<Team, List<Player>> entry : preMolesTeams.entrySet())
+					{
+						//Team team = entry.getKey();
+						List<Player> value = entry.getValue();
+						if(value.contains(s)) {
+						for(Player p : value)
+							{
+								p.sendMessage(ChatColor.DARK_RED+""+ChatColor.ITALIC + "[Taupe] "+ChatColor.RESET+ChatColor.RED+" <"+s.getName()+"> " + ChatColor.RESET + moleMessage(a));
+							}
+						}
+					}
 				
 				return true;
 			}
@@ -717,7 +719,7 @@ public class TaupeGunPlugin extends JavaPlugin{
 	/**
 	 * Find all moles in different teams
 	 */
-	private void startRandomMoles(){
+	void startRandomMoles(){
 	
 		int rand = 0;
 		
@@ -780,7 +782,7 @@ public class TaupeGunPlugin extends JavaPlugin{
 							
 								rand = context.getRandom().nextInt(team.countPlayer());
 								
-								if (!players.contains(team.getPlayers().get(rand))){
+								if (!players.contains(team.getPlayers().get(rand)) & !team.getPlayers().get(rand).isDead()){
 									
 									context.addMole(team.getPlayers().get(rand));
 									
@@ -897,7 +899,18 @@ class Timer extends BukkitRunnable
 				
 				if(minutes == -1)
 				{
+					
+					// Choose moles now for the future
+					plugin.startRandomMoles();
+					
+					// Initialize moles teams
+					for(int i = 1; i <= this.plugin.getContext().getNumberTeamMoles(); i++)
+					{
+						this.plugin.getContext().addMolesTeam("Taupes-"+i);
+					}
+					
 					plugin.getContext().activateMoles();
+					plugin.getContext().setPreMolesTeam();
 					
 					for (Player player : plugin.getContext().getAllPlayers())
 					{
