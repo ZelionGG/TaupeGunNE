@@ -13,7 +13,7 @@ Taupe Gun Plugin for Minecraft sucharged by ZelionGG
 - Every mole has a random kit (/claim)
   
 ## Dependencies
-- The mod required [TitleManager-1.5.11.jar](https://www.spigotmc.org/resources/titlemanager.1049/download?version=36918) to work (2.1.3 is not working, I have not tested any version other than those two)
+- The mod requires [TitleManager-1.5.11.jar](https://www.spigotmc.org/resources/titlemanager.1049/download?version=36918) to work (2.1.3 is not working, I have not tested any version other than those two)
 
 # Credits
 Inspired from [Valgrifer/Super-Taupe-Gun](https://github.com/Valgrifer/Super-Taupe-Gun/tree/master/Super%20Taupe%20Gun/src), surcharged from [LetMeR00t/TaupeGun-Minecraft](https://github.com/LetMeR00t/TaupeGun-Minecraft)
